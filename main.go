@@ -14,8 +14,8 @@ type CityState struct {
 	garrison map[string]int
 }
 type PlayerState struct {
+	// leader string
 	CityState
-	leader string
 }
 
 func (ci CityState) Details() {
@@ -47,14 +47,18 @@ func main() {
 
 	fmt.Println("New City State Name:")
 	scanner.Scan()
-	ucname := scanner.Text()
+	varPlayer := playernewstate(scanner.Text())
 
-	PlayerState := CityState{
-		name:     ucname,
-		garrison: map[string]int{"Milita": 1000, "Infantry Swordsman": 500}}
-
-	PlayerState.Details()
+	varPlayer.Details()
 	// Implement Other functions/methods for invade(),develop(),tax(),hire()
 
 	panic("Nothing Else Is Implemented,Dinosaurs Attack Everyone \nThe End ")
+}
+
+func playernewstate(name string) *CityState {
+	// You can safely return a pointer to local variable
+	// as a local variable will survive the scope of the function.
+	plst := CityState{name: name}
+	plst.garrison = map[string]int{"Milita": 500}
+	return &plst
 }
