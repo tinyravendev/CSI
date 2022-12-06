@@ -13,6 +13,10 @@ type CityState struct {
 	name     string
 	garrison map[string]int
 }
+type PlayerState struct {
+	CityState
+	leader string
+}
 
 func (ci CityState) Details() {
 
@@ -20,6 +24,11 @@ func (ci CityState) Details() {
 	for key, value := range ci.garrison {
 		fmt.Printf("Garrison: %v %v\n", value, key)
 	}
+
+}
+
+func (player PlayerState) Invade(target CityState) {
+	fmt.Printf("You're State %v Invaded %v", player.name, target.name)
 }
 
 func main() {
